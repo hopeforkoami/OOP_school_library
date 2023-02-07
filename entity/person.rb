@@ -9,7 +9,6 @@ class Person
     @permission = parent_permission
   end
 
-
   private
 
   def of_age?
