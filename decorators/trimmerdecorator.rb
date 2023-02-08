@@ -1,4 +1,5 @@
-class TrimmerDecorator
+require_relative './decorator'
+class TrimmerDecorator < Decorator
   def initialize(param)
     super(param)
   end

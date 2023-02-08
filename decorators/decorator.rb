@@ -1,4 +1,4 @@
-require"./interface/nameable"
+require_relative '../interface/nameable'
 class Decorator < Nameable
   def initialize(params)
     @nameable = params
