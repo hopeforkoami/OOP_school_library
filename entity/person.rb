@@ -4,6 +4,7 @@ class Person < Nameable
   attr_accessor :name, :age
 
   def initialize(age, name, parent_permission: true)
+    super
     @id = Random.rand(1..10_000)
     @name = name
     @age = age
