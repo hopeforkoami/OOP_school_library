@@ -1,7 +1,7 @@
 require_relative '../interface/nameable'
 class Decorator < Nameable
+  attr_accessor :nameable
   def initialize(params)
-    super
     @nameable = params
   end
 
