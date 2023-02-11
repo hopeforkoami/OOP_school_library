@@ -123,7 +123,9 @@ class App
       when '6'
         print'ID of person : '
         pers_id = gets.chomp
-        list_rentals_of(pers_id)    
+        list_rentals_of(pers_id)
+      when '7'
+        puts'Exiting the App'    
       else
         puts"Error: menu option has an invalid value (#{retour})"
         puts retour.class
