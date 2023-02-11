@@ -21,6 +21,13 @@ class Person < Nameable
     Rental.new(date, book, self)
   end
 
+  def display_self_rentals
+    puts'Rentals'
+    @rentals.each { |rental| 
+      puts'Date: '.concat(rental.date).concat(', Book "').concat(rental.book.title).concat('" by ').concat(rental.book.author)
+    }
+  end
+
   private
 
   def of_age?

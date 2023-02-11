@@ -1,6 +1,8 @@
 require'./entity/student'
 require'./entity/teacher'
 require'./entity/classroom'
+require'./entity/book'
+require'./entity/rental'
 class App
   def initialize
     @books =[]
@@ -22,6 +24,23 @@ class App
   end
   def list_persons
     @persons.each { |person| puts person.display_person }
+  end
+  def create_book
+    print'Title : '
+    title = gets.chomp
+    print'Author : '
+    author = gets.chomp
+    @books.push(Book.new(title, author))
+    puts'Book created successfully'
+    puts''
+    puts''
+  end
+  def list_books
+    cpt = 0
+    @books.each { |book|
+      puts cpt.to_s.concat')  Title: "'.concat(book.title).concat('" , Author: ').concat(book.author)
+      cpt = cpt + 1
+    }
   end
   def create_person
     person_option =''
@@ -62,24 +81,54 @@ class App
         puts"Error: option  has an invalid value (#{person_option})"
       end
   end
+
+  def create_rental
+    puts'Select a book from the following list by number'
+    list_books
+    book_id = gets.chomp
+    puts''
+    puts'Select a person from the following list by number(not id)'
+    person_id = gets.chomp
+    dat = Time.new
+    @rentals.push(dat, @book[book_id], @persons[person_id])
+    puts''
+    puts'Date  '.concat(dat.strftime("%Y/%m/%d"))
+    puts'Rental created successfully'
+
+  end
+  def list_rentals_of(id)
+    pers = ''
+    @persons.each { |person|
+      if person.id == id
+        person.display_self_rentals
+      end
+    }
+  end
+
   def run
     retour = 0
     until retour=='7' do
       retour = display_main_menu()
       case retour  
+      when '1'
+          list_books
+      when '2'
+          list_persons
       when '3'
           create_person
-          
+      when '4'
+          create_book
+      when '5'
+          create_rental
+      when '6'
+        print'ID of person : '
+        pers_id = gets.chomp
+        list_rentals_of(pers_id)    
       else
-        puts"Error: capacity has an invalid value (#{retour})"
+        puts"Error: menu option has an invalid value (#{retour})"
         puts retour.class
       end
     end
     puts'Progam exit '
-  end
-  def testing
-    create_person
-    create_person
-    list_persons
   end
 end
