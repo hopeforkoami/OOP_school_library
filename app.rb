@@ -116,15 +116,15 @@ class App
   def action_controller(retour)
     case retour
     when '1'
-      app.list_books
+      list_books
     when '2'
-      app.list_persons
+      list_persons
     when '3'
-      app.create_person
+      create_person
     when '4'
-      app.create_book
+      create_book
     when '5'
-      app.create_rental
+      create_rental
     when '6'
       print 'ID of person : '
       pers_id = gets.chomp
