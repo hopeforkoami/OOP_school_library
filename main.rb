@@ -1,9 +1,23 @@
-require './entity/person'
-require './decorators/capitalizedecorator'
-require './decorators/trimmerdecorator'
-person = Person.new(22, 'maximilianus')
-person.correct_name
-capitalized_person = CapitalizeDecorator.new(person)
-puts capitalized_person.correct_name
-capitalized_trimmed_person = TrimmerDecorator.new(capitalized_person)
-puts capitalized_trimmed_person.correct_name
+require './app'
+require './entity/student'
+require './entity/book'
+require './entity/teacher'
+require './entity/classroom'
+require './entity/rental'
+
+def main
+  app = App.new
+  retour = 0
+  until retour == '7'
+    retour = app.display_main_menu
+    if retour == '7'
+      puts 'Exiting the program'
+    else
+      app.action_controller(retour)
+    end
+
+  end
+  puts 'Progam exit '
+end
+
+main
