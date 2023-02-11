@@ -11,7 +11,8 @@ class App
     @default_class = Classroom.new('Tle C4')
   end
   def display_main_menu
-    puts'Welcome to School Library App!\n\n'
+    puts'Welcome to School Library App!'
+    puts''
     puts'Please choose an option by enterin a number:'
     puts'1 - List all books'
     puts'2 - List all people'
