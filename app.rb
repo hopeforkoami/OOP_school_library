@@ -4,6 +4,7 @@ require './entity/classroom'
 require './entity/book'
 require './entity/rental'
 class App
+  attr_accessor :books, :persons, :rentals
   def initialize
     @books = []
     @persons = []
@@ -44,6 +45,13 @@ class App
     cpt = 0
     @books.each do |book|
       puts cpt.to_s.concat ')  Title: "'.concat(book.title).concat('" , Author: ').concat(book.author)
+      cpt += 1
+    end
+  end
+  def show_persons
+    cpt = 0
+    @persons.each do |person|
+      puts "#{cpt}) -  #{person.display_person}"
       cpt += 1
     end
   end
@@ -96,14 +104,15 @@ class App
   def create_rental
     puts 'Select a book from the following list by number'
     list_books
-    book_id = gets.chomp
+    book_id = gets.chomp.to_i
     puts ''
     puts 'Select a person from the following list by number(not id)'
-    person_id = gets.chomp
-    dat = Time.new
-    @rentals.push(dat, @book[book_id], @persons[person_id])
+    show_persons
+    person_id = gets.chomp.to_i
+    print'Date: '
+    dat = gets.chomp
+    @rentals.push(dat, @books[book_id], @persons[person_id])
     puts ''
-    puts 'Date  '.concat(dat.strftime('%Y/%m/%d'))
     puts 'Rental created successfully'
   end
 
@@ -127,8 +136,8 @@ class App
       create_rental
     when '6'
       print 'ID of person : '
-      pers_id = gets.chomp
-      app.list_rentals_of(pers_id)
+      pers_id = gets.chomp.to_i
+      list_rentals_of(pers_id)
     else
       puts "Error: menu option has an invalid value (#{retour})"
     end

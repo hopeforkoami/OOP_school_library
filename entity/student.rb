@@ -18,6 +18,6 @@ class Student < Person
   end
 
   def display_person
-    '[Student]  Name: '.concat(@name).concat(' , ID: ').concat(@id.to_i).concat(' , age: ').concat(@age)
+    "[Student]  Name: #{@name} , ID: #{@id.to_i}  , age: #{@age}  "
   end
 end

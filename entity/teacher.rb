@@ -13,6 +13,6 @@ class Teacher < Person
   end
 
   def display_person
-    "[Teacher]  Name: (#{@name}) , ID: (#{@id.to_i})  , age: (#{@age})  , Specialization : (#{@specialization})"
+    "[Teacher]  Name: #{@name} , ID: #{@id.to_i}  , age: #{@age}  , Specialization : #{@specialization}"
   end
 end

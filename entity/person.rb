@@ -6,7 +6,7 @@ class Person < Nameable
 
   def initialize(age, name, parent_permission)
     super()
-    @id = Random.rand(1...1000)
+    @id = Random.rand(1..1000)
     @name = name
     @age = age
     @permission = parent_permission
@@ -24,7 +24,7 @@ class Person < Nameable
   def display_self_rentals
     puts 'Rentals'
     @rentals.each do |rental|
-      puts "Date: (#{rental.date}), Book ''(#{rental.book.title})'' by (#{rental.book.author})"
+      puts "Date: #{rental.date}, Book '#{rental.book.title}' by #{rental.book.author}"
     end
   end
 
