@@ -3,7 +3,7 @@ def main
   app = App.new
   retour = 0
   until retour=='7' do
-    retour = display_main_menu()
+    retour = app.display_main_menu()
     case retour  
     when '1'
         app.list_books
