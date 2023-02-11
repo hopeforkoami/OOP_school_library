@@ -97,7 +97,6 @@ class App
 
   end
   def list_rentals_of(id)
-    pers = ''
     @persons.each { |person|
       if person.id == id
         person.display_self_rentals
@@ -105,32 +104,4 @@ class App
     }
   end
 
-  def run
-    retour = 0
-    until retour=='7' do
-      retour = display_main_menu()
-      case retour  
-      when '1'
-          list_books
-      when '2'
-          list_persons
-      when '3'
-          create_person
-      when '4'
-          create_book
-      when '5'
-          create_rental
-      when '6'
-        print'ID of person : '
-        pers_id = gets.chomp
-        list_rentals_of(pers_id)
-      when '7'
-        puts'Exiting the App'    
-      else
-        puts"Error: menu option has an invalid value (#{retour})"
-        puts retour.class
-      end
-    end
-    puts'Progam exit '
-  end
 end
