@@ -1,10 +1,10 @@
-require_relative'./person'
+require_relative './person'
 
 class Teacher < Person
   attr_accessor :specialization
 
   def initialize(specialization, age, name)
-    super(age, name,  true)
+    super(age, name, true)
     @specialization = specialization
   end
 
@@ -13,6 +13,6 @@ class Teacher < Person
   end
 
   def display_person
-    '[Teacher]  Name: '.concat(@name).concat(' , ID: ').concat(@id.to_i).concat(' , age: ').concat(@age).concat('  , Specialization : ').concat(@specialization)
+    "[Teacher]  Name: (#{@name}) , ID: (#{@id.to_i})  , age: (#{@age})  , Specialization : (#{@specialization})"
   end
 end

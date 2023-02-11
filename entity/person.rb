@@ -22,10 +22,10 @@ class Person < Nameable
   end
 
   def display_self_rentals
-    puts'Rentals'
-    @rentals.each { |rental| 
-      puts'Date: '.concat(rental.date).concat(', Book "').concat(rental.book.title).concat('" by ').concat(rental.book.author)
-    }
+    puts 'Rentals'
+    @rentals.each do |rental|
+      puts "Date: (#{rental.date}), Book ''(#{rental.book.title})'' by (#{rental.book.author})"
+    end
   end
 
   private
