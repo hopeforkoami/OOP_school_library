@@ -5,6 +5,7 @@ require './entity/book'
 require './entity/rental'
 class App
   attr_accessor :books, :persons, :rentals
+
   def initialize
     @books = []
     @persons = []
@@ -48,6 +49,7 @@ class App
       cpt += 1
     end
   end
+
   def show_persons
     cpt = 0
     @persons.each do |person|
@@ -109,7 +111,7 @@ class App
     puts 'Select a person from the following list by number(not id)'
     show_persons
     person_id = gets.chomp.to_i
-    print'Date: '
+    print 'Date: '
     dat = gets.chomp
     @rentals.push(dat, @books[book_id], @persons[person_id])
     puts ''
