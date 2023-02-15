@@ -7,10 +7,12 @@ require './entity/rental'
 
 def main
   app = App.new
+  app.load_data
   retour = 0
   until retour == '7'
     retour = app.display_main_menu
     if retour == '7'
+      app.save_data
       puts 'Exiting the program'
     else
       app.action_controller(retour)
@@ -19,5 +21,17 @@ def main
   end
   puts 'Progam exit '
 end
-
-main
+def test
+  
+  app = App.new
+  app.persons =[
+    Student.new('TleC4',14,'kokou',true),
+    Teacher.new('English','Mr Komla',40),
+    Student.new('TleC4',15,'erik',false),
+    Teacher.new('Maths','Bt Jerome',50),
+    Student.new('TleC4',20,'james',true),
+    ]
+  app.show_persons  
+  app.save_data
+end
+test

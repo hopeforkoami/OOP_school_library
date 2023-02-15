@@ -3,6 +3,8 @@ require './entity/teacher'
 require './entity/classroom'
 require './entity/book'
 require './entity/rental'
+require 'rubygems'
+require 'json'
 class App
   attr_accessor :books, :persons, :rentals
 
@@ -144,4 +146,34 @@ class App
       puts "Error: menu option has an invalid value (#{retour})"
     end
   end
+  def file_is_empty?(file_path) 
+    !(File.file?(file_path) && !File.zero?(file_path))
+  end
+  
+  def load_data
+    # loading persons
+    if !file_is_empty?("./data/persons.json")
+      fichier = File.read('./data/persons.json')
+      persons_hash = JSON.parse(fichier)
+      tempst = Student.new('', 0, '', true)
+      temptch = Teacher.new('', 0, '')
+      persons_hash.map { |person| 
+        if defined?(person['specialization'])
+          @persons.push(temptch.initialize_from_json(person))
+        else
+          @persons.push(Student.new(tempst.initialize_from_json(person)))
+        end
+      }
+
+    end
+    puts"Data loaded successfuly"
+    #loading books
+  end
+  def save_data
+    return_hash = @persons.each { |person| person.export_to_json}
+    return_hash.each{|line| puts line}
+    File.write("./data/persons.json", return_hash.to_json)
+    puts"Persons saved with success"
+  end
+  
 end
