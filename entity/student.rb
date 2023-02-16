@@ -22,10 +22,17 @@ class Student < Person
   def display_person
     "[Student]  Name: #{@name} , ID: #{@id.to_i}  , age: #{@age}  "
   end
-  def export_to_json
-    self.to_json
+  def to_json(*args)
+    {
+      JSON.create_id => self.class.name,
+      'id' => @id,
+      'classroom' => @classroom,
+      'age' => @age,
+      'name' => @name,
+      'parent_permission' => @parent_permission
+    }.to_json(*args)
   end
-  def initialize_from_json(string)
+  def from_json(string)
     data = JSON.load string
     @id = data['id']
     @classroom = data['classroom']

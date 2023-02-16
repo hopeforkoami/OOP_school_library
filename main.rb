@@ -24,14 +24,15 @@ end
 def test
   
   app = App.new
-  app.persons =[
+  persons =[
     Student.new('TleC4',14,'kokou',true),
     Teacher.new('English','Mr Komla',40),
     Student.new('TleC4',15,'erik',false),
     Teacher.new('Maths','Bt Jerome',50),
     Student.new('TleC4',20,'james',true),
     ]
+  app.load_data
   app.show_persons  
-  app.save_data
+  
 end
 test

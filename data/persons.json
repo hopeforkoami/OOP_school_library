@@ -1,1 +1,7 @@
-["#<Student:0x0000025f730edbc8>","#<Teacher:0x0000025f730edb78>","#<Student:0x0000025f730edb28>","#<Teacher:0x0000025f730edad8>","#<Student:0x0000025f730ed948>"]
+[
+{"json_class":"Student","id":223,"classroom":"TleC4","age":14,"name":"kokou","parent_permission":null},
+{"json_class":"Teacher","id":687,"specialization":"English","age":"Mr Komla","name":40},
+{"json_class":"Student","id":912,"classroom":"TleC4","age":15,"name":"erik","parent_permission":null},
+{"json_class":"Teacher","id":802,"specialization":"Maths","age":"Bt Jerome","name":50},
+{"json_class":"Student","id":643,"classroom":"TleC4","age":20,"name":"james","parent_permission":null}
+]

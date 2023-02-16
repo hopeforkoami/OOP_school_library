@@ -153,15 +153,19 @@ class App
   def load_data
     # loading persons
     if !file_is_empty?("./data/persons.json")
-      fichier = File.read('./data/persons.json')
-      persons_hash = JSON.parse(fichier)
+      persons_hash = JSON.parse(File.read('./data/persons.json'),create_additions:true)
+      
       tempst = Student.new('', 0, '', true)
       temptch = Teacher.new('', 0, '')
-      persons_hash.map { |person| 
+      persons_hash.each { |person| 
         if defined?(person['specialization'])
-          @persons.push(temptch.initialize_from_json(person))
+          #@persons.push(temptch.initialize_from_json(person))
+          print "it is a teacher"
+          puts person
         else
-          @persons.push(Student.new(tempst.initialize_from_json(person)))
+          #@persons.push(Student.new(tempst.initialize_from_json(person)))
+          print "it is a student"
+          puts person
         end
       }
 
@@ -170,9 +174,22 @@ class App
     #loading books
   end
   def save_data
-    return_hash = @persons.each { |person| person.export_to_json}
-    return_hash.each{|line| puts line}
-    File.write("./data/persons.json", return_hash.to_json)
+    fichier = File.open("./data/persons.json", "w")
+    fichier.puts '['
+    cpt =0
+    @persons.each { |person| 
+      
+      if cpt<(@persons.length()-1)
+        fichier.print person.to_json
+        fichier.puts ','
+      else
+        fichier.puts person.to_json
+      end
+      cpt+=1
+      puts person.to_json
+
+    }
+    fichier.puts ']'
     puts"Persons saved with success"
   end
   
