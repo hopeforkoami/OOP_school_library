@@ -36,4 +36,18 @@ def test
   app.show_persons  
   
 end
-test
+  
+def test_books
+  app = App.new
+  books = [
+    Book.new('book1','author1'),
+    Book.new('book2','author2'),
+    Book.new('book3','author3'),
+    Book.new('book4','author4'),
+    Book.new('book5','author5'),
+    Book.new('book6','author6')
+  ]
+  app.load_book
+  app.list_books
+end
+test_books

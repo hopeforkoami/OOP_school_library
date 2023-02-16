@@ -169,20 +169,7 @@ class App
       end
       puts"Persons Data loaded successfuly \n\n"
     end
-    #loading books
-    if !file_is_empty?("./data/books.json")
-      books_hash = JSON.parse(File.read('./data/books.json'),create_additions:true)
-      if books_hash.length >0
-        books_hash.each { |book| 
-            tempbk = Book.new('', '')
-            tempbk.from_json(book)
-            @books.push(tempbk)
-        }
-      end
-      puts"Persons Data loaded successfuly \n\n"
-    end
-
-    puts"Data loaded successfuly \n\n"
+    
     #loading books
   end
   def save_data
@@ -203,6 +190,43 @@ class App
     }
     fichier.puts ']'
     puts"Persons saved with success"
+  end
+
+  def saved_book
+    fichier = File.open("./data/books.json", "w")
+    fichier.puts '['
+    cpt =0
+    @books.each { |book| 
+      
+      if cpt<(@books.length()-1)
+        fichier.print book.to_json
+        fichier.puts ','
+      else
+        fichier.puts book.to_json
+      end
+      cpt+=1
+      puts book.to_json
+
+    }
+    fichier.puts ']'
+    puts"books saved with success"
+  end
+
+  def load_book
+    #loading books
+    if !file_is_empty?("./data/books.json")
+      books_hash = JSON.parse(File.read('./data/books.json'),create_additions:true)
+      if books_hash.length >0
+        books_hash.each { |book| 
+            tempbk = Book.new('', '')
+            tempbk.from_json(book)
+            @books.push(tempbk)
+        }
+      end
+      puts"books Data loaded successfuly \n\n"
+    end
+
+    puts"Data loaded successfuly \n\n"
   end
   
 end
