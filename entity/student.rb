@@ -29,11 +29,11 @@ class Student < Person
       'classroom' => @classroom,
       'age' => @age,
       'name' => @name,
-      'parent_permission' => @parent_permission
+      'permission' => @parent_permission == nil ? true : @persmission
     }.to_json(*args)
   end
-  def from_json(string)
-    data = JSON.load string
+  def from_json(data)
+    
     @id = data['id']
     @classroom = data['classroom']
     @age = data['age']

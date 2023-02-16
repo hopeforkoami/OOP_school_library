@@ -154,23 +154,35 @@ class App
     # loading persons
     if !file_is_empty?("./data/persons.json")
       persons_hash = JSON.parse(File.read('./data/persons.json'),create_additions:true)
-      
-      tempst = Student.new('', 0, '', true)
-      temptch = Teacher.new('', 0, '')
-      persons_hash.each { |person| 
-        if defined?(person['specialization'])
-          #@persons.push(temptch.initialize_from_json(person))
-          print "it is a teacher"
-          puts person
-        else
-          #@persons.push(Student.new(tempst.initialize_from_json(person)))
-          print "it is a student"
-          puts person
-        end
-      }
-
+      if persons_hash.length >0
+        persons_hash.each { |person| 
+          if person['specialization']
+            temptch = Teacher.new('', 0, '')
+            temptch.from_json(person)
+            @persons.push(temptch)
+          else
+            tempst = Student.new('', 0, '', true)
+            tempst.from_json(person)
+            @persons.push(tempst)
+          end
+        }
+      end
+      puts"Persons Data loaded successfuly \n\n"
     end
-    puts"Data loaded successfuly"
+    #loading books
+    if !file_is_empty?("./data/books.json")
+      books_hash = JSON.parse(File.read('./data/books.json'),create_additions:true)
+      if books_hash.length >0
+        books_hash.each { |book| 
+            tempbk = Book.new('', '')
+            tempbk.from_json(book)
+            @books.push(tempbk)
+        }
+      end
+      puts"Persons Data loaded successfuly \n\n"
+    end
+
+    puts"Data loaded successfuly \n\n"
     #loading books
   end
   def save_data

@@ -37,8 +37,7 @@ class Teacher < Person
     }.to_json(*args)
   end
 
-  def from_json(string)
-    data = JSON.load string
+  def from_json(data)
     @id = data['id']
     @specialization = data['specialization']
     @age = data['age']

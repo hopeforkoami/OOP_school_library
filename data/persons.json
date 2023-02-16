@@ -1,7 +1,7 @@
 [
-{"json_class":"Student","id":223,"classroom":"TleC4","age":14,"name":"kokou","parent_permission":null},
-{"json_class":"Teacher","id":687,"specialization":"English","age":"Mr Komla","name":40},
-{"json_class":"Student","id":912,"classroom":"TleC4","age":15,"name":"erik","parent_permission":null},
-{"json_class":"Teacher","id":802,"specialization":"Maths","age":"Bt Jerome","name":50},
-{"json_class":"Student","id":643,"classroom":"TleC4","age":20,"name":"james","parent_permission":null}
+{"json_class":"Student","id":6,"classroom":"TleC4","age":14,"name":"kokou","permission":true},
+{"json_class":"Teacher","id":753,"specialization":"English","age":"Mr Komla","name":40},
+{"json_class":"Student","id":251,"classroom":"TleC4","age":15,"name":"erik","permission":true},
+{"json_class":"Teacher","id":75,"specialization":"Maths","age":"Bt Jerome","name":50},
+{"json_class":"Student","id":388,"classroom":"TleC4","age":20,"name":"james","permission":true}
 ]

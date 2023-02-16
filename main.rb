@@ -32,6 +32,7 @@ def test
     Student.new('TleC4',20,'james',true),
     ]
   app.load_data
+  #puts app.persons[1].display_person
   app.show_persons  
   
 end
