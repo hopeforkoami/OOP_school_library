@@ -29,7 +29,8 @@ class Student < Person
       'classroom' => @classroom,
       'age' => @age,
       'name' => @name,
-      'permission' => @parent_permission == nil ? true : @persmission
+      'permission' => @parent_permission == nil ? true : @persmission,
+      'rentals' => @rentals
     }.to_json(*args)
   end
   def from_json(data)
@@ -39,5 +40,6 @@ class Student < Person
     @age = data['age']
     @name =  data['name']
     @persmission =  data['permission']
+    @rentals = data['rentals']
   end
 end

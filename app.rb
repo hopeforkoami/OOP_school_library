@@ -190,6 +190,27 @@ class App
     }
     fichier.puts ']'
     puts"Persons saved with success"
+    #saving book
+  end
+  def save_books
+    fichier = File.open("./data/books.json", "w")
+    fichier.puts '['
+    cpt =0
+    @books.each { |book| 
+      
+      if cpt<(@book.length()-1)
+        fichier.print book.to_json
+        fichier.puts ','
+      else
+        fichier.puts book.to_json
+      end
+      cpt+=1
+      puts book.to_json
+
+    }
+    fichier.puts ']'
+    puts"Persons saved with success"
+    #saving book
   end
 
   def saved_book
