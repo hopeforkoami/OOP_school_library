@@ -1,0 +1,11 @@
+[
+"2023/02/16",
+{"json_class":"Book","id":null,"title":"book1","author":"author1","rentals":[]},
+{"json_class":"Student","id":6,"classroom":"TleC4","age":14,"name":"kokou","permission":true,"rentals":null},
+"2023/02/15",
+{"json_class":"Book","id":null,"title":"book2","author":"author2","rentals":[]},
+{"json_class":"Student","id":6,"classroom":"TleC4","age":14,"name":"kokou","permission":true,"rentals":null},
+"2023/02/14",
+{"json_class":"Book","id":null,"title":"book3","author":"author3","rentals":[]},
+{"json_class":"Student","id":6,"classroom":"TleC4","age":14,"name":"kokou","permission":true,"rentals":null}
+]

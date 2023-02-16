@@ -23,8 +23,11 @@ class Person < Nameable
 
   def display_self_rentals
     puts 'Rentals'
-    @rentals.each do |rental|
-      puts "Date: #{rental.date}, Book '#{rental.book.title}' by #{rental.book.author}"
+    @rentals = @rentals.nil? ? [] : @rentals
+    if @rentals.length>0
+      @rentals.each do |rental|
+        puts "Date: #{rental.date}, Book '#{rental.book.title}' by #{rental.book.author}"
+      end
     end
   end
 

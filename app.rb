@@ -250,4 +250,43 @@ class App
     puts"Data loaded successfuly \n\n"
   end
   
+  def saved_rentals
+    fichier = File.open("./data/rentals.json", "w")
+    fichier.puts '['
+    cpt =0
+    @rentals.each { |rental| 
+      if cpt<(@rentals.length()-1)
+        fichier.puts'{'
+        fichier.puts rental.to_json
+        fichier.puts'}'
+        fichier.puts ','
+      else
+        fichier.puts'{'
+        fichier.puts rental.to_json
+        fichier.puts'}'
+      end
+      cpt+=1
+      puts rental.to_json
+
+    }
+    fichier.puts ']'
+    puts"Rentals saved with success"
+  end
+
+  def load_rentals
+    #loading rentals
+    if !file_is_empty?("./data/rentals.json")
+      rentals_hash = JSON.parse(File.read('./data/rentals.json'),create_additions:true)
+      if rentals_hash.length >0
+        rentals_hash.each { |rental| 
+            temprt = Rental.new('', Teacher.new('', 0, ''), Book.new('',''))
+            temprt.from_json(rental)
+            @books.push(temprt)
+        }
+      end
+      puts"books Data loaded successfuly \n\n"
+    end
+
+    puts"Data loaded successfuly \n\n"
+  end
 end

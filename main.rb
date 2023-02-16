@@ -50,4 +50,29 @@ def test_books
   app.load_book
   app.list_books
 end
-test_books
+
+def test_rentals
+  app = App.new
+  rentals = [
+    Rental.new('2023/02/14',  Book.new('book1','author1'),Student.new('TleC4',20,'james',true)),
+    Rental.new('2023/02/14',  Book.new('book2','author2'),Student.new('TleC4',20,'james',true)),
+    Rental.new('2023/02/14',  Book.new('book3','author3'),Student.new('TleC4',20,'james',true))
+  ]
+  app.load_book
+  app.load_data
+  retour = 0
+  until retour == '7'
+    retour = app.display_main_menu
+    if retour == '7'
+      app.saved_rentals
+      retour = 0
+      puts 'Exiting the program'
+    else
+      app.action_controller(retour)
+    end
+
+  end
+  puts 'Progam exit '
+  #app.list_books
+end
+test_rentals
